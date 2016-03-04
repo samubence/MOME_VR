@@ -6,6 +6,7 @@ public class Player : MonoBehaviour {
 	public bool useCharacterController = true;
 	public bool stayStill = true;
 	public float stayStillForce = 10;
+	public bool useLift = false;
 	public GameObject myHead;
 	public float walkSpeed = 1;
 
@@ -26,7 +27,7 @@ public class Player : MonoBehaviour {
 	void Update () 
 	{
 		Vector2 inputWalk = new Vector2 (Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical"));
-		float inputLift = Input.GetAxis ("JoyLift");
+		float inputLift = useLift ? Input.GetAxis ("JoyLift") : 0f;
 
 		Vector3 walkDirection = myHead.transform.forward * inputWalk.y + myHead.transform.right * inputWalk.x + myHead.transform.up * inputLift;
 
